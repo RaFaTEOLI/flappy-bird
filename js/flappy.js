@@ -154,7 +154,7 @@ function colidiu(passaro, barreiras) {
 function Perdeu(passaro, pontos) {
     this.elemento = novoElemento('span', 'perdeu');
     passaro.elemento.style.display = 'none';
-    // this.elemento.innerHTML = 'Voce Perdeu!<br>Sua pontuacao: ' + pontos;
+    //this.elemento.innerHTML = 'Voce Perdeu!<span class="perdeu-pontuacao">Sua pontuação: ' + pontos + '</span>';
     this.elemento.innerHTML = 'Voce Perdeu!';
 }
 
@@ -184,6 +184,13 @@ function FlappyBird() {
                 const perdeu = new Perdeu(passaro, pontos);
                 clearInterval(temporizador);
                 areaDoJogo.appendChild(perdeu.elemento);
+                if (perdeu) {
+                    window.onkeyup = e => {
+                        if (e.keyCode == 32) {
+                            location.reload();
+                        }
+                    }
+                }
             }
         }, 20);
     }
